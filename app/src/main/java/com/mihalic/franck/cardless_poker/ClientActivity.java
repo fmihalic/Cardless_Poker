@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.nsd.NsdManager;
 import android.net.nsd.NsdServiceInfo;
+import android.os.Build;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,9 +32,11 @@ public class ClientActivity extends AppCompatActivity {
     private int randomCard2;
     private int playerNumber;
     private int handNumber;
-    private static final int SERVERPORT = 5000;
-    private static final String SERVER_IP = "10.0.2.2";
-    boolean isEmulated=true;
+    private static final int SERVER_PORT_EMULATED = 5000;
+    // Attribute name for GOT fans only
+    private static final int SERVER_PORT_REAL = 6000;
+    private static final String SERVER_IP_EMULATED = "10.0.2.2";
+    boolean isEmulated;
     boolean isDealer;
     boolean isHiddenCards=true;
     Handler timerHandler;
@@ -48,8 +51,11 @@ public class ClientActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        initShowHideCardsButtonManagement();
+        // Try to see if code is run on an emulator
+        isEmulated=isEmulator();
 
+        // Buttons management
+        initShowHideCardsButtonManagement();
         initShowCardsButtonManagement();
 
         // Try to discover service CardlessPokerServer on network
@@ -162,13 +168,13 @@ public class ClientActivity extends AppCompatActivity {
                 // Create Socket used for communication with server
                 Socket socket;
                 if (isEmulated){
-                    InetAddress serverAddr = InetAddress.getByName(SERVER_IP);
-                    socket = new Socket(serverAddr, SERVERPORT);
+                    InetAddress serverAddr = InetAddress.getByName(SERVER_IP_EMULATED);
+                    socket = new Socket(serverAddr, SERVER_PORT_EMULATED);
 
                 } else {
                     // TODO see what can be done with ports on real devices
                     InetAddress serverAddr = cardlessPokerServerService.getHost();
-                    socket = new Socket(serverAddr, 6000);
+                    socket = new Socket(serverAddr, SERVER_PORT_REAL);
                 }
 
                 // PrintWriter used to send data to server
@@ -286,5 +292,16 @@ public class ClientActivity extends AppCompatActivity {
                     }
                 })
                 .show();
+    }
+
+    public static boolean isEmulator() {
+        return Build.FINGERPRINT.startsWith("generic")
+                || Build.FINGERPRINT.startsWith("unknown")
+                || Build.MODEL.contains("google_sdk")
+                || Build.MODEL.contains("Emulator")
+                || Build.MODEL.contains("Android SDK built for x86")
+                || Build.MANUFACTURER.contains("Genymotion")
+                || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
+                || "google_sdk".equals(Build.PRODUCT);
     }
 }

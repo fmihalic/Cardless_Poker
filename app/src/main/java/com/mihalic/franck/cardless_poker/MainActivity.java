@@ -24,9 +24,9 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -34,32 +34,32 @@ public class MainActivity extends AppCompatActivity {
 
     List<Integer> myPokerDeckArray;
     List<Player> myPokerPlayerArray;
-    int randomCard1;
-    int randomCard2;
-    int randomCard3;
-    int randomCard4;
-    int randomCard5;
+    int SecureRandomCard1;
+    int SecureRandomCard2;
+    int SecureRandomCard3;
+    int SecureRandomCard4;
+    int SecureRandomCard5;
 
-    int randomCard1Player1;
-    int randomCard2Player1;
-    int randomCard1Player2;
-    int randomCard2Player2;
-    int randomCard1Player3;
-    int randomCard2Player3;
-    int randomCard1Player4;
-    int randomCard2Player4;
-    int randomCard1Player5;
-    int randomCard2Player5;
-    int randomCard1Player6;
-    int randomCard2Player6;
-    int randomCard1Player7;
-    int randomCard2Player7;
-    int randomCard1Player8;
-    int randomCard2Player8;
-    int randomCard1Player9;
-    int randomCard2Player9;
-    int randomCard1Player10;
-    int randomCard2Player10;
+    int SecureRandomCard1Player1;
+    int SecureRandomCard2Player1;
+    int SecureRandomCard1Player2;
+    int SecureRandomCard2Player2;
+    int SecureRandomCard1Player3;
+    int SecureRandomCard2Player3;
+    int SecureRandomCard1Player4;
+    int SecureRandomCard2Player4;
+    int SecureRandomCard1Player5;
+    int SecureRandomCard2Player5;
+    int SecureRandomCard1Player6;
+    int SecureRandomCard2Player6;
+    int SecureRandomCard1Player7;
+    int SecureRandomCard2Player7;
+    int SecureRandomCard1Player8;
+    int SecureRandomCard2Player8;
+    int SecureRandomCard1Player9;
+    int SecureRandomCard2Player9;
+    int SecureRandomCard1Player10;
+    int SecureRandomCard2Player10;
 
     NsdManager.RegistrationListener mRegistrationListener;
     NsdManager mNsdManager;
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             // Register NSD Network Service Discovery
             registerService(mLocalPort);
         } catch (IOException e) {
-            // todo manage socket exception here.
+            e.printStackTrace();
         }
 
         // Initialize Button management
@@ -276,17 +276,17 @@ public class MainActivity extends AppCompatActivity {
 
                 // if flop
                 if (buttonTextValue.equals(getResources().getString(R.string.buttonFlop))){
-                    img1.setImageResource(randomCard1);
-                    img2.setImageResource(randomCard2);
-                    img3.setImageResource(randomCard3);
+                    img1.setImageResource(SecureRandomCard1);
+                    img2.setImageResource(SecureRandomCard2);
+                    img3.setImageResource(SecureRandomCard3);
                     tv.setText(R.string.buttonTurn);
                     // if turn
                 } else if (buttonTextValue.equals(getResources().getString(R.string.buttonTurn))) {
-                    img4.setImageResource(randomCard4);
+                    img4.setImageResource(SecureRandomCard4);
                     tv.setText(R.string.buttonRiver);
                     // if river
                 } else if (buttonTextValue.equals(getResources().getString(R.string.buttonRiver))) {
-                    img5.setImageResource(randomCard5);
+                    img5.setImageResource(SecureRandomCard5);
                     tv.setText(R.string.buttonStart);
                     // if start
                 } else {
@@ -303,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private int assignUser() {
-        // TODO: 25/04/2017 : manager user connect and disconnect. for now assign +1 to user number
+        // TODO: 25/04/2017 : manager user connect and disconnect. for now assign +1 to user number. Manage max user.
         Player newPlayer=new Player();
         newPlayer.setNumber(myPokerPlayerArray.size()+1);
         newPlayer.setActive(true);
@@ -312,35 +312,35 @@ public class MainActivity extends AppCompatActivity {
     }
     private void assignCards(PrintWriter os, int playerNumber) {
         if (playerNumber==1){
-            os.println(randomCard1Player1);
-            os.println(randomCard2Player1);
+            os.println(SecureRandomCard1Player1);
+            os.println(SecureRandomCard2Player1);
         } else if (playerNumber==2){
-            os.println(randomCard1Player2);
-            os.println(randomCard2Player2);
+            os.println(SecureRandomCard1Player2);
+            os.println(SecureRandomCard2Player2);
         } else if (playerNumber==3){
-            os.println(randomCard1Player3);
-            os.println(randomCard2Player3);
+            os.println(SecureRandomCard1Player3);
+            os.println(SecureRandomCard2Player3);
         } else if (playerNumber==4){
-            os.println(randomCard1Player4);
-            os.println(randomCard2Player4);
+            os.println(SecureRandomCard1Player4);
+            os.println(SecureRandomCard2Player4);
         } else if (playerNumber==5){
-            os.println(randomCard1Player5);
-            os.println(randomCard2Player5);
+            os.println(SecureRandomCard1Player5);
+            os.println(SecureRandomCard2Player5);
         } else if (playerNumber==6){
-            os.println(randomCard1Player6);
-            os.println(randomCard2Player6);
+            os.println(SecureRandomCard1Player6);
+            os.println(SecureRandomCard2Player6);
         } else if (playerNumber==7){
-            os.println(randomCard1Player7);
-            os.println(randomCard2Player7);
+            os.println(SecureRandomCard1Player7);
+            os.println(SecureRandomCard2Player7);
         } else if (playerNumber==8){
-            os.println(randomCard1Player8);
-            os.println(randomCard2Player8);
+            os.println(SecureRandomCard1Player8);
+            os.println(SecureRandomCard2Player8);
         } else if (playerNumber==9){
-            os.println(randomCard1Player9);
-            os.println(randomCard2Player9);
+            os.println(SecureRandomCard1Player9);
+            os.println(SecureRandomCard2Player9);
         } else if (playerNumber==10){
-            os.println(randomCard1Player10);
-            os.println(randomCard2Player10);
+            os.println(SecureRandomCard1Player10);
+            os.println(SecureRandomCard2Player10);
         }
     }
 
@@ -411,133 +411,133 @@ public class MainActivity extends AppCompatActivity {
         myPokerDeckArray.add(R.drawable.card_ah);
         myPokerDeckArray.add(R.drawable.card_as);
 
-        // Get a random card in the deck for each card : Flop / Turn / River
-        setRandomCard1(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard1));
-        setRandomCard2(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard2));
-        setRandomCard3(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard3));
-        setRandomCard4(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard4));
-        setRandomCard5(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard5));
+        // Get a SecureRandom card in the deck for each card : Flop / Turn / River
+        setSecureRandomCard1(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard1));
+        setSecureRandomCard2(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard2));
+        setSecureRandomCard3(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard3));
+        setSecureRandomCard4(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard4));
+        setSecureRandomCard5(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard5));
 
-        // Get 2 random cards in the deck for ALL possible players (10 max).
-        setRandomCard1Player1(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard1Player1));
-        setRandomCard2Player1(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard2Player1));
-        setRandomCard1Player2(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard1Player2));
-        setRandomCard2Player2(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard2Player2));
-        setRandomCard1Player3(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard1Player3));
-        setRandomCard2Player3(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard2Player3));
-        setRandomCard1Player4(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard1Player4));
-        setRandomCard2Player4(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard2Player4));
-        setRandomCard1Player5(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard1Player5));
-        setRandomCard2Player5(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard2Player5));
-        setRandomCard1Player6(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard1Player6));
-        setRandomCard2Player6(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard2Player6));
-        setRandomCard1Player7(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard1Player7));
-        setRandomCard2Player7(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard2Player7));
-        setRandomCard1Player8(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard1Player8));
-        setRandomCard2Player8(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard2Player8));
-        setRandomCard1Player9(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard1Player9));
-        setRandomCard2Player9(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard2Player9));
-        setRandomCard1Player10(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard1Player10));
-        setRandomCard2Player10(myPokerDeckArray.get(new Random().nextInt(myPokerDeckArray.size())));
-        myPokerDeckArray.remove(myPokerDeckArray.indexOf(randomCard2Player10));
+        // Get 2 SecureRandom cards in the deck for ALL possible players (10 max).
+        setSecureRandomCard1Player1(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard1Player1));
+        setSecureRandomCard2Player1(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard2Player1));
+        setSecureRandomCard1Player2(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard1Player2));
+        setSecureRandomCard2Player2(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard2Player2));
+        setSecureRandomCard1Player3(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard1Player3));
+        setSecureRandomCard2Player3(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard2Player3));
+        setSecureRandomCard1Player4(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard1Player4));
+        setSecureRandomCard2Player4(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard2Player4));
+        setSecureRandomCard1Player5(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard1Player5));
+        setSecureRandomCard2Player5(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard2Player5));
+        setSecureRandomCard1Player6(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard1Player6));
+        setSecureRandomCard2Player6(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard2Player6));
+        setSecureRandomCard1Player7(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard1Player7));
+        setSecureRandomCard2Player7(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard2Player7));
+        setSecureRandomCard1Player8(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard1Player8));
+        setSecureRandomCard2Player8(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard2Player8));
+        setSecureRandomCard1Player9(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard1Player9));
+        setSecureRandomCard2Player9(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard2Player9));
+        setSecureRandomCard1Player10(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard1Player10));
+        setSecureRandomCard2Player10(myPokerDeckArray.get(new SecureRandom().nextInt(myPokerDeckArray.size())));
+        myPokerDeckArray.remove(myPokerDeckArray.indexOf(SecureRandomCard2Player10));
     }
-    public void setRandomCard1(int randomCard1) {
-        this.randomCard1 = randomCard1;
+    public void setSecureRandomCard1(int SecureRandomCard1) {
+        this.SecureRandomCard1 = SecureRandomCard1;
     }
-    public void setRandomCard2(int randomCard2) {
-        this.randomCard2 = randomCard2;
+    public void setSecureRandomCard2(int SecureRandomCard2) {
+        this.SecureRandomCard2 = SecureRandomCard2;
     }
-    public void setRandomCard3(int randomCard3) {
-        this.randomCard3 = randomCard3;
+    public void setSecureRandomCard3(int SecureRandomCard3) {
+        this.SecureRandomCard3 = SecureRandomCard3;
     }
-    public void setRandomCard4(int randomCard4) {
-        this.randomCard4 = randomCard4;
+    public void setSecureRandomCard4(int SecureRandomCard4) {
+        this.SecureRandomCard4 = SecureRandomCard4;
     }
-    public void setRandomCard5(int randomCard5) {
-        this.randomCard5 = randomCard5;
+    public void setSecureRandomCard5(int SecureRandomCard5) {
+        this.SecureRandomCard5 = SecureRandomCard5;
     }
-    public void setRandomCard1Player1(int randomCard) {
-        this.randomCard1Player1 = randomCard;
+    public void setSecureRandomCard1Player1(int SecureRandomCard) {
+        this.SecureRandomCard1Player1 = SecureRandomCard;
     }
-    public void setRandomCard2Player1(int randomCard) {
-        this.randomCard2Player1 = randomCard;
+    public void setSecureRandomCard2Player1(int SecureRandomCard) {
+        this.SecureRandomCard2Player1 = SecureRandomCard;
     }
-    public void setRandomCard1Player2(int randomCard) {
-        this.randomCard1Player2 = randomCard;
+    public void setSecureRandomCard1Player2(int SecureRandomCard) {
+        this.SecureRandomCard1Player2 = SecureRandomCard;
     }
-    public void setRandomCard2Player2(int randomCard) {
-        this.randomCard2Player2 = randomCard;
+    public void setSecureRandomCard2Player2(int SecureRandomCard) {
+        this.SecureRandomCard2Player2 = SecureRandomCard;
     }
-    public void setRandomCard1Player3(int randomCard) {
-        this.randomCard1Player3 = randomCard;
+    public void setSecureRandomCard1Player3(int SecureRandomCard) {
+        this.SecureRandomCard1Player3 = SecureRandomCard;
     }
-    public void setRandomCard2Player3(int randomCard) {
-        this.randomCard2Player3 = randomCard;
+    public void setSecureRandomCard2Player3(int SecureRandomCard) {
+        this.SecureRandomCard2Player3 = SecureRandomCard;
     }
-    public void setRandomCard1Player4(int randomCard) {
-        this.randomCard1Player4 = randomCard;
+    public void setSecureRandomCard1Player4(int SecureRandomCard) {
+        this.SecureRandomCard1Player4 = SecureRandomCard;
     }
-    public void setRandomCard2Player4(int randomCard) {
-        this.randomCard2Player4 = randomCard;
+    public void setSecureRandomCard2Player4(int SecureRandomCard) {
+        this.SecureRandomCard2Player4 = SecureRandomCard;
     }
-    public void setRandomCard1Player5(int randomCard) {
-        this.randomCard1Player5 = randomCard;
+    public void setSecureRandomCard1Player5(int SecureRandomCard) {
+        this.SecureRandomCard1Player5 = SecureRandomCard;
     }
-    public void setRandomCard2Player5(int randomCard) {
-        this.randomCard2Player5 = randomCard;
+    public void setSecureRandomCard2Player5(int SecureRandomCard) {
+        this.SecureRandomCard2Player5 = SecureRandomCard;
     }
-    public void setRandomCard1Player6(int randomCard) {
-        this.randomCard1Player6 = randomCard;
+    public void setSecureRandomCard1Player6(int SecureRandomCard) {
+        this.SecureRandomCard1Player6 = SecureRandomCard;
     }
-    public void setRandomCard2Player6(int randomCard) {
-        this.randomCard2Player6 = randomCard;
+    public void setSecureRandomCard2Player6(int SecureRandomCard) {
+        this.SecureRandomCard2Player6 = SecureRandomCard;
     }
-    public void setRandomCard1Player7(int randomCard) {
-        this.randomCard1Player7 = randomCard;
+    public void setSecureRandomCard1Player7(int SecureRandomCard) {
+        this.SecureRandomCard1Player7 = SecureRandomCard;
     }
-    public void setRandomCard2Player7(int randomCard) {
-        this.randomCard2Player7 = randomCard;
+    public void setSecureRandomCard2Player7(int SecureRandomCard) {
+        this.SecureRandomCard2Player7 = SecureRandomCard;
     }
-    public void setRandomCard1Player8(int randomCard) {
-        this.randomCard1Player8 = randomCard;
+    public void setSecureRandomCard1Player8(int SecureRandomCard) {
+        this.SecureRandomCard1Player8 = SecureRandomCard;
     }
-    public void setRandomCard2Player8(int randomCard) {
-        this.randomCard2Player8 = randomCard;
+    public void setSecureRandomCard2Player8(int SecureRandomCard) {
+        this.SecureRandomCard2Player8 = SecureRandomCard;
     }
-    public void setRandomCard1Player9(int randomCard) {
-        this.randomCard1Player9 = randomCard;
+    public void setSecureRandomCard1Player9(int SecureRandomCard) {
+        this.SecureRandomCard1Player9 = SecureRandomCard;
     }
-    public void setRandomCard2Player9(int randomCard) {
-        this.randomCard2Player9 = randomCard;
+    public void setSecureRandomCard2Player9(int SecureRandomCard) {
+        this.SecureRandomCard2Player9 = SecureRandomCard;
     }
-    public void setRandomCard1Player10(int randomCard) {
-        this.randomCard1Player10 = randomCard;
+    public void setSecureRandomCard1Player10(int SecureRandomCard) {
+        this.SecureRandomCard1Player10 = SecureRandomCard;
     }
-    public void setRandomCard2Player10(int randomCard) {
-        this.randomCard2Player10 = randomCard;
+    public void setSecureRandomCard2Player10(int SecureRandomCard) {
+        this.SecureRandomCard2Player10 = SecureRandomCard;
     }
 }

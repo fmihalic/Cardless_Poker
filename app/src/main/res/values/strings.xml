@@ -9,8 +9,8 @@
     <string name="buttonTurn">Turn</string>
     <string name="buttonRiver">River</string>
     <string name="buttonStart">Start</string>
-    <string name="buttonClient">Client</string>
-    <string name="buttonServer">Server</string>
+    <string name="buttonClient">Client / Player</string>
+    <string name="buttonServer">Server / Board</string>
     <string name="buttonShowHideCards">Show / Hide Cards</string>
     <string name="buttonShowCards">Show</string>
     <string name="playerNumber">Player Number #</string>
