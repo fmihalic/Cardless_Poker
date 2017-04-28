@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mihalic.franck.cardless_poker.ClientActivity"
+    android:background="@drawable/background">
+
+    <ImageView
+        android:id="@+id/card1"
+        android:layout_width="114dp"
+        android:layout_height="210dp"
+        android:layout_marginTop="72dp"
+        android:contentDescription="@string/firstCard"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/card2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/card_back" />
+
+    <ImageView
+        android:id="@+id/card2"
+        android:layout_width="114dp"
+        android:layout_height="210dp"
+        android:layout_marginTop="72dp"
+        android:contentDescription="@string/secondCard"
+        android:visibility="visible"
+        app:layout_constraintLeft_toRightOf="@+id/card1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/card_back"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/showHideCardButton"
+        android:layout_width="382dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/buttonShowHideCards"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/showCardButton"
+        android:layout_width="88dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="70dp"
+        android:text="@string/buttonShowCards"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/showHideCardButton" />
+
+    <TextView
+        android:id="@+id/playerNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/playerNumber"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="4dp"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/handNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginRight="15dp"
+        android:text="@string/handNumber"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="15dp" />
+
+    <ImageView
+        android:id="@+id/dealerImage"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        app:srcCompat="@drawable/dealer"
+        app:layout_constraintRight_toLeftOf="@+id/card2"
+        app:layout_constraintLeft_toRightOf="@+id/card1"
+        app:layout_constraintHorizontal_bias="0.494"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/showCardButton" />
+</android.support.constraint.ConstraintLayout>

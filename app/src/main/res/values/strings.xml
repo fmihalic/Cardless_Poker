@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Cardless Poker</string>
+    <string name="firstCard">First Card</string>
+    <string name="secondCard">Second Card</string>
+    <string name="thirdCard">Third Card</string>
+    <string name="turnCard">Turn Card</string>
+    <string name="rivertCard">River Card</string>
+    <string name="buttonFlop">Flop</string>
+    <string name="buttonTurn">Turn</string>
+    <string name="buttonRiver">River</string>
+    <string name="buttonStart">Start</string>
+    <string name="buttonClient">Client</string>
+    <string name="buttonServer">Server</string>
+    <string name="buttonShowHideCards">Show / Hide Cards</string>
+    <string name="buttonShowCards">Show</string>
+    <string name="playerNumber">Player Number #</string>
+    <string name="handNumber">Hand Number #</string>
+    <string name="dialogNoServerMessage">No server found on network. Verify wifi connection and server is UP.</string>
+    <string name="dialogNoServerTitle">An error occurred</string>
+    <string name="version">Release/Version #</string>
+</resources>

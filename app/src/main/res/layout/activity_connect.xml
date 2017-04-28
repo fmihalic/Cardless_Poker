@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mihalic.franck.cardless_poker.ConnectActivity"
+    android:background="@drawable/background">
+
+    <Button
+        android:id="@+id/clientButton"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:text="@string/buttonClient"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="100dp"
+        app:layout_constraintVertical_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="100dp" />
+
+    <Button
+        android:id="@+id/serverButton"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:text="@string/buttonServer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/clientButton"
+        android:layout_marginLeft="100dp"
+        app:layout_constraintVertical_bias="0.498"
+        android:layout_marginRight="100dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp" />
+
+    <TextView
+        android:id="@+id/versionName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.482" />
+</android.support.constraint.ConstraintLayout>

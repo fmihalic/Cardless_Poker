@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    tools:context="com.mihalic.franck.cardless_poker.MainActivity"
+    tools:layout_editor_absoluteY="73dp"
+    tools:layout_editor_absoluteX="0dp"
+    android:background="@drawable/background">
+
+
+    <TextView
+        android:id="@+id/handNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginRight="14dp"
+        android:text="@string/handNumber"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/card3"
+        android:layout_width="114dp"
+        android:layout_height="210dp"
+        android:contentDescription="@string/thirdCard"
+        android:visibility="visible"
+        app:srcCompat="@drawable/card_back"
+        app:layout_constraintRight_toLeftOf="@+id/card4"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toRightOf="@+id/card2" />
+
+    <ImageView
+        android:id="@+id/card4"
+        android:layout_width="114dp"
+        android:layout_height="210dp"
+        android:contentDescription="@string/turnCard"
+        android:visibility="visible"
+        app:srcCompat="@drawable/card_back"
+        app:layout_constraintRight_toLeftOf="@+id/card5"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toRightOf="@+id/card3" />
+
+    <ImageView
+        android:id="@+id/card5"
+        android:layout_width="114dp"
+        android:layout_height="210dp"
+        android:contentDescription="@string/rivertCard"
+        android:visibility="visible"
+        app:srcCompat="@drawable/card_back"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/card4" />
+
+    <ImageView
+        android:id="@+id/card2"
+        android:layout_width="114dp"
+        android:layout_height="210dp"
+        android:contentDescription="@string/secondCard"
+        android:visibility="visible"
+        app:srcCompat="@drawable/card_back"
+        app:layout_constraintRight_toLeftOf="@+id/card3"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toRightOf="@+id/card1" />
+
+    <ImageView
+        android:id="@+id/card1"
+        android:layout_width="114dp"
+        android:layout_height="210dp"
+        android:contentDescription="@string/firstCard"
+        android:visibility="visible"
+        app:srcCompat="@drawable/card_back"
+        app:layout_constraintRight_toLeftOf="@+id/card2"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/mainButton"
+        android:layout_width="136dp"
+        android:layout_height="99dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/buttonFlop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="278dp" />
+
+</android.support.constraint.ConstraintLayout>
