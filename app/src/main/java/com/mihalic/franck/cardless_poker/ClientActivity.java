@@ -145,6 +145,8 @@ public class ClientActivity extends AppCompatActivity {
 
                 updateHandNumber();
                 updateDealerImage();
+                // Update Player number on screen
+                updatePlayerNumber();
                 timerHandler.postDelayed(this, delay);
             }
         }, delay);
@@ -245,7 +247,7 @@ public class ClientActivity extends AppCompatActivity {
 
     private void updatePlayerNumber() {
         TextView playerNumberTV = (TextView) findViewById(R.id.playerNumber);
-        String fullPlayerNumber=playerNumberTV.getText()+String.valueOf(playerNumber);
+        String fullPlayerNumber=getResources().getText(R.string.playerNumber)+String.valueOf(playerNumber);
         playerNumberTV.setText(fullPlayerNumber);
     }
 
