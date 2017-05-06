@@ -9,6 +9,7 @@
     <string name="buttonTurn">Turn</string>
     <string name="buttonRiver">River</string>
     <string name="buttonStart">Start</string>
+    <string name="buttonRestart">Restart</string>
     <string name="buttonClient">Client / Player</string>
     <string name="buttonServer">Server / Board</string>
     <string name="buttonShowHideCards">Show / Hide Cards</string>

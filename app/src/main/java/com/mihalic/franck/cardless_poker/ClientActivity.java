@@ -1,4 +1,5 @@
 package com.mihalic.franck.cardless_poker;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,9 +25,13 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
+import android.provider.Settings.Secure;
+
+
 
 public class ClientActivity extends AppCompatActivity {
 
+    private String android_id;
     private NsdServiceInfo cardlessPokerServerService;
     private int randomCard1;
     private int randomCard2;
@@ -44,6 +49,7 @@ public class ClientActivity extends AppCompatActivity {
     ImageView img2;
     ImageView imgDealer;
 
+    @SuppressLint("HardwareIds")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +59,10 @@ public class ClientActivity extends AppCompatActivity {
 
         // Try to see if code is run on an emulator
         isEmulated=isEmulator();
+
+        // Get android ID. Suppress hardware warning, if any issue use Advertising ID instead. For now it's working fine.
+        android_id = Secure.getString(getApplicationContext().getContentResolver(),
+                Secure.ANDROID_ID);
 
         // Buttons management
         initShowHideCardsButtonManagement();
@@ -136,7 +146,7 @@ public class ClientActivity extends AppCompatActivity {
                 sleep(100);
 
                 // Check if it's a new hand (to auto hide cards);
-                updateIsNewHand();
+                updateIfNewHand();
                 if (isHiddenCards) {
                     hideCards();
                 } else {
@@ -152,7 +162,7 @@ public class ClientActivity extends AppCompatActivity {
         }, delay);
     }
 
-    private void updateIsNewHand() {
+    private void updateIfNewHand() {
         // If new hand, card are auto hidden
         TextView handNumberTV = (TextView) findViewById(R.id.handNumber);
         String str=(String)handNumberTV.getText();
@@ -190,7 +200,9 @@ public class ClientActivity extends AppCompatActivity {
 
                 // Send player number to server to get card.
                 // If 0 it's an init and server will return a new player number
+                // send Android ID
                 output.println(playerNumber);
+                output.println(android_id);
                 playerNumber = Integer.valueOf(input.readLine());
                 // Get hand number autoincrement by server
                 handNumber = Integer.valueOf(input.readLine());

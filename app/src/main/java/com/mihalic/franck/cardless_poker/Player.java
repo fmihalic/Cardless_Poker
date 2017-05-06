@@ -7,7 +7,7 @@ package com.mihalic.franck.cardless_poker;
 public class Player {
 
     private int number;
-    private boolean active;
+    private String androidID;
 
     public int getNumber() {
         return number;
@@ -15,10 +15,10 @@ public class Player {
     public void setNumber(int number) {
         this.number = number;
     }
-    public boolean isActive() {
-        return active;
+    public String getAndroidID() {
+        return androidID;
     }
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setAndroidID(String androidID) {
+        this.androidID = androidID;
     }
 }

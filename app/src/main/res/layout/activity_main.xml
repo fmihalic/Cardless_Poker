@@ -85,13 +85,22 @@
         android:id="@+id/mainButton"
         android:layout_width="136dp"
         android:layout_height="99dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="12dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:text="@string/buttonFlop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="278dp" />
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/buttonRestart"
+        android:layout_width="136dp"
+        android:layout_height="99dp"
+        android:layout_marginBottom="11dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/buttonRestart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/mainButton" />
 
 </android.support.constraint.ConstraintLayout>

@@ -103,6 +103,9 @@ public class MainActivity extends AppCompatActivity {
         // Initialize Button management
         initButtonManagement();
 
+        // Initialize Restart Button management
+        initRestartButtonManagement();
+
         text = (TextView) findViewById(R.id.text2);
         updateConversationHandler = new Handler();
         this.serverThread = new Thread(new ServerThread());
@@ -161,8 +164,9 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     // read 1st line containing user number
                     Integer playerNumber = Integer.valueOf(input.readLine());
+                    String androidID = input.readLine();
                     if(playerNumber==0){
-                        playerNumber=assignUser();
+                        playerNumber=assignUser(androidID);
                     }
                     outPut.println(playerNumber);
                     outPut.println(handNumber);
@@ -301,11 +305,70 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private int assignUser() {
-        // TODO: 25/04/2017 : manager user connect and disconnect. for now assign +1 to user number. Manage max user.
+    private void initRestartButtonManagement() {
+        final Button restartButton = (Button) findViewById(R.id.buttonRestart);
+        restartButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Get ImageView of each card
+                final ImageView img1= (ImageView) findViewById(R.id.card1);
+                final ImageView img2= (ImageView) findViewById(R.id.card2);
+                final ImageView img3= (ImageView) findViewById(R.id.card3);
+                final ImageView img4= (ImageView) findViewById(R.id.card4);
+                final ImageView img5= (ImageView) findViewById(R.id.card5);
+
+                // Add 1 second delay on button to avoid multiple click that cause crash
+                restartButton.setEnabled(false);
+                Timer buttonTimer = new Timer();
+                buttonTimer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                restartButton.setEnabled(true);
+                            }
+                        });
+                    }
+                }, 1000);
+
+                final Button mainButton = (Button) findViewById(R.id.mainButton);
+                // Add 1 second delay on button to avoid multiple click that cause crash
+                mainButton.setEnabled(false);
+                Timer buttonTimer2 = new Timer();
+                buttonTimer2.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mainButton.setEnabled(true);
+                            }
+                        });
+                    }
+                }, 1000);
+
+                img1.setImageResource(R.drawable.card_back);
+                img2.setImageResource(R.drawable.card_back);
+                img3.setImageResource(R.drawable.card_back);
+                img4.setImageResource(R.drawable.card_back);
+                img5.setImageResource(R.drawable.card_back);
+                initDeck();
+                mainButton.setText(R.string.buttonFlop);
+            }
+        });
+    }
+
+    private int assignUser(String androidID) {
+        // Verify if user exists in the poker player using the android ID.
+        for (Player player : myPokerPlayerArray) {
+            if (player.getAndroidID().equals(androidID)){
+                return player.getNumber();
+            }
+        }
+        // If user not found, create a new user.
         Player newPlayer=new Player();
         newPlayer.setNumber(myPokerPlayerArray.size()+1);
-        newPlayer.setActive(true);
+        newPlayer.setAndroidID(androidID);
         myPokerPlayerArray.add(newPlayer);
         return newPlayer.getNumber();
     }
