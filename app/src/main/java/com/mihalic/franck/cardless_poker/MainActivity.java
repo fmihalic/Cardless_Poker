@@ -417,6 +417,9 @@ public class MainActivity extends AppCompatActivity {
         if (myPokerPlayerArray==null || dealerPlayerNumber>myPokerPlayerArray.size()){
             dealerPlayerNumber=1;
         }
+        TextView playerNumberTV = (TextView) findViewById(R.id.dealerNumber);
+        String fullDealerNumber=getResources().getText(R.string.dealerNumber)+String.valueOf(dealerPlayerNumber);
+        playerNumberTV.setText(fullDealerNumber);
 
         myPokerDeckArray=new ArrayList<>();
         // Add int value of drawable image in an array list

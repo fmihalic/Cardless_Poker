@@ -15,11 +15,23 @@
         android:id="@+id/handNumber"
         android:layout_width="wrap_content"
         android:layout_height="17dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginRight="14dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="13dp"
         android:text="@string/handNumber"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="13dp" />
+
+    <TextView
+        android:id="@+id/dealerNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="8dp"
+        android:text="@string/dealerNumber"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="8dp" />
 
     <ImageView
         android:id="@+id/card3"
@@ -83,24 +95,28 @@
 
     <Button
         android:id="@+id/mainButton"
-        android:layout_width="136dp"
-        android:layout_height="99dp"
-        android:layout_marginBottom="12dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:background="@drawable/chip_restart"
         android:text="@string/buttonFlop"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toLeftOf="@+id/buttonRestart" />
 
     <Button
         android:id="@+id/buttonRestart"
-        android:layout_width="136dp"
-        android:layout_height="99dp"
-        android:layout_marginBottom="11dp"
-        android:layout_marginLeft="16dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="100dp"
+        android:background="@drawable/chip_restart"
         android:text="@string/buttonRestart"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/mainButton" />
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

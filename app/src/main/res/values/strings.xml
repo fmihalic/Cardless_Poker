@@ -16,6 +16,7 @@
     <string name="buttonShowCards">Show</string>
     <string name="playerNumber">Player Number #</string>
     <string name="handNumber">Hand Number #</string>
+    <string name="dealerNumber">Dealer Player #</string>
     <string name="dialogNoServerMessage">No server found on network. Verify wifi connection and server is UP.</string>
     <string name="dialogNoServerTitle">An error occurred</string>
     <string name="version">Release/Version #</string>
